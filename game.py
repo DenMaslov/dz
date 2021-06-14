@@ -43,7 +43,7 @@ class Game(Config):
             defending_squad = defender.get_squad_to_attack(squad.strategy)
             if self.attacker_win(squad, defending_squad):
                 damage = squad.do_damage() * self.DAMAGE_BOOSTER
-                log.info(f'{attacker.name} do damage {damage} to defender {defender.name}')
+                log.info(f'{attacker.name} does damage {damage} to defender {defender.name}')
                 defending_squad.get_damage(damage)
 
     def attacker_win(self, attacker: Squad, defender: Squad) -> bool:
