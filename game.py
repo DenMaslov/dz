@@ -41,7 +41,6 @@ class Game(Config):
         """Simulates fight of attacker's squads against defenders"""
         for squad in attacker.squads:
             defending_squad = defender.get_squad_to_attack(squad.strategy)
-            log.info("-" * 40)
             if self.attacker_win(squad, defending_squad):
                 damage = squad.do_damage() * self.DAMAGE_BOOSTER
                 log.info(f'{attacker.name} do damage {damage} to defender {defender.name}')
@@ -53,9 +52,11 @@ class Game(Config):
         """
         if isinstance(attacker, Squad) and isinstance(defender, Squad):
             if attacker.attack_success >= defender.attack_success:
+                log.info("-" * 40)
                 log.info("Attack is successful")
                 return True
             else:
+                log.info("-" * 40)
                 log.info("Attack is not successful")
                 return False
 
