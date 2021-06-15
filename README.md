@@ -3,6 +3,8 @@
 2. run main.py
 3. Requires module "statistics"
 
+for testing in test directory run:  py -m unittest 
+
 ### TESTED WITH:
 * Windows 10
 * python 3.9
