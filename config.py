@@ -22,7 +22,7 @@ class Config:
     MIN_UNITS = 5
     MAX_UNITS = 10
 
-    DAMAGE_BOOSTER = 10000
+    DAMAGE_BOOSTER = 1000
 
     DMG_TO_VEHICLE = 0.6  # 60%
     DMG_TO_ONE_OPER = 0.2  # 20%
