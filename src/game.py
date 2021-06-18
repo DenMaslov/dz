@@ -8,13 +8,20 @@ from config import Config
 # useful for tests modules
 rootLog = log.getLogger()
 rootLog.setLevel(log.DEBUG)
-log.basicConfig(format='%(message)s')
+log.basicConfig(format='%(message)s',
+                handlers=[
+                    log.FileHandler("../logs/logs.log", mode='w'),
+                    log.StreamHandler()
+                ])
 
 
 class Game(Config):
 
     def __init__(self) -> None:
         self.__armies = []
+        self.__winner = None
+        self.__step = 1
+        self.__show_from_step = 4
 
     def add_army(self, army: Army) -> None:
         """Adds alive army to the list of the armies"""
@@ -25,15 +32,21 @@ class Game(Config):
 
     def start(self) -> None:
         """Main game loop. Checks if number of armies >= 2"""
+        self.__step = 1
         if len(self.__armies) >= self.MIN_ARMIES:
             log.info("\n\n\n")
             while not self.have_winner():
+                self.can_show_step()
+                self.show_current_step()
+                self.__step += 1
                 for attacker in self.__armies:
-                    for defender in self.__armies:
-                        if attacker != defender:
-                            log.info(f"attacking army: {attacker.name}")
-                            self.fight(attacker, defender)
-                            self.show_state()
+                    if not self.have_winner():
+                        for defender in self.__armies:
+                            if attacker != defender and not self.have_winner():
+                                log.info(f"attacking army: {attacker.name}")
+                                self.fight(attacker, defender)
+                                self.show_state()
+            self.show_winner()
         else:
             raise ValueError("The game has to consist of 2 armies or more.")
 
@@ -75,7 +88,7 @@ class Game(Config):
             log.info(f'state: {army.state()}')
         log.info("\n" + "=" * 100)
         log.info("\n")
-
+    
     def have_winner(self) -> bool:
         """Checks if there is only one alive army"""
         alive_armies = []
@@ -85,12 +98,43 @@ class Game(Config):
                     alive_armies.append(army.name)
                     break
         if len(alive_armies) == 1:
-            log.info("*" * 50)
-            log.info(f"The winner is - {alive_armies[0]}")
-            log.info("*" * 50)
+            self.__winner = alive_armies[0]
             return True
+        return False
+
+    @property
+    def start_step(self) -> int:
+        """Returns start step"""
+        return self.__show_from_step
+    
+    @start_step.setter
+    def start_step(self, step: int) -> None:
+        if isinstance(step, int):
+            self.__show_from_step = step
         else:
-            return False
+            raise ValueError("Step must be int")
+    
+    def show_winner(self) -> None:
+        """Shows winner"""
+        log.info("*" * 50)
+        log.info(f"The winner is - {self.__winner}")
+        log.info("*" * 50)
+        log.info(f"seed: {self.seed}")
+        log.info(f"steps: {self.__step}")
+        log.info("=" * 50)
+
+    def show_current_step(self) -> None:
+        """Shows current step"""
+        log.info("*" * 30)
+        log.info(f"step: {self.__step}")
+        log.info("*" * 30)
+
+    def can_show_step(self):
+        """Checks if step should be logged"""
+        if self.__step >= self.__show_from_step:
+            rootLog.setLevel(log.DEBUG)
+        else:
+            self.turn_off_logs()
 
     def turn_off_logs(self) -> None:
         """Turns off logs. Used for test modules"""

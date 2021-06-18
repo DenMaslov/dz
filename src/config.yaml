@@ -1,0 +1,48 @@
+---
+Soldier: &def_soldier
+    health: 100
+    experience: 0
+Vehicle: &def_vehicle
+    operators: 3
+
+SEED: 12345678
+STEP: 0
+ARMIES:
+    ARMY1:
+        - name: "red"
+        - SQUAD:  
+            - Vehicle: *def_vehicle
+            - Soldier: *def_soldier
+            - Vehicle:
+                operators: 2
+            - Vehicle: *def_vehicle
+            - Soldier: *def_soldier
+            - Soldier: *def_soldier
+        - SQUAD:  
+            - Soldier: *def_soldier
+            - Vehicle: *def_vehicle
+    ARMY2:
+        - name: "white"
+        - SQUAD:  
+            - Vehicle: *def_vehicle
+            - Soldier: *def_soldier
+            - Vehicle:
+                operators: 2
+        - SQUAD:  
+            - Soldier: *def_soldier
+            - Vehicle: *def_vehicle
+            - Soldier: *def_soldier
+            - Soldier: *def_soldier
+    ARMY3:
+        - name: "black"
+        - SQUAD:  
+            - Vehicle: *def_vehicle
+            - Soldier: *def_soldier
+            - Vehicle:
+                operators: 2
+        - SQUAD:  
+            - Soldier: *def_soldier
+            - Vehicle: *def_vehicle
+            - Soldier: *def_soldier
+            - Soldier: *def_soldier
+

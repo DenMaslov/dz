@@ -9,6 +9,7 @@ from config import Config
 class Squad(Config):
 
     def __init__(self) -> None:
+        random.seed(self.seed)
         self.__strategy = random.choice(self.STRATEGIES)
         self.__units = []
         self.__is_alive = False

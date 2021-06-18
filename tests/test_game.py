@@ -2,8 +2,8 @@ import unittest
 import os, sys
 
 currentdir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
+currentdir = currentdir.replace("tests", "src")
+sys.path.append(currentdir)
 
 from army import Army
 from game import Game

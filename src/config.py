@@ -1,4 +1,15 @@
+
 class Config:
+    
+    __seed = 12345
+    
+    @property
+    def seed(self):
+        return self.__seed
+
+    @seed.setter
+    def seed(self, seed: int):
+        self.__seed(seed)
 
     MIN_HEALTH = 0
     MAX_HEALTH = 100

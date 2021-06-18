@@ -11,6 +11,7 @@ class Vehicle(Config):
     As operators are used instances of Soldier class.
     """
     def __init__(self) -> None:
+        random.seed(self.seed)
         self.__operators = []
         self.__health = self.MAX_HEALTH
         self.__is_alive = False

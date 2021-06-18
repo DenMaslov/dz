@@ -10,6 +10,7 @@ class Soldier(Config):
     """
 
     def __init__(self) -> None:
+        random.seed(self.seed)
         self.__health = self.MAX_HEALTH
         self.__is_alive = True
         self.__experience = self.MIN_EXPERIENCE

@@ -13,6 +13,7 @@ class Army(Config):
     
     def __init__(self, name: str) -> None:
         self.__name = name
+        random.seed(self.seed)
         self.__squads = []
         self.__strategy = random.choice(self.STRATEGIES)
         self.__is_alive = False
