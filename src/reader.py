@@ -72,13 +72,13 @@ class Reader:
         res_armies = []
         temp = 0
         for army in data_armies:
-            for el in army:
-                for key in el:
+            for army_element in army:
+                for key in army_element:
                     s = Squad()
                     if key == "name":
-                        res_armies.append(Army(name=el[key]))
+                        res_armies.append(Army(name=army_element[key]))
                     else:
-                        for unit in el[key]:
+                        for unit in army_element[key]:
                             for key in unit:
                                 if key == "Vehicle":
                                     s.add_unit(self.create_vehicle(unit[key]))

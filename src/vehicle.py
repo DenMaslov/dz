@@ -3,9 +3,10 @@ from statistics import geometric_mean as gavg
 
 from soldier import Soldier
 from config import Config
+from base import BaseUnit
 
 
-class Vehicle(Config):
+class Vehicle(BaseUnit, Config):
     """ Class represents Vehicle model.
     Contains main fields of Vehicle.
     As operators are used instances of Soldier class.

@@ -1,9 +1,10 @@
 import random
 
 from config import Config
+from base import BaseUnit
 
 
-class Soldier(Config):
+class Soldier(BaseUnit, Config):
     """ Base class of Soldier.
 
     Contains main fields of Soldier.
