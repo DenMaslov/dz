@@ -1,7 +1,11 @@
 ### INSTALLATION:
 1. git clone https://github.com/DenMaslov/dz.git
-2. run main.py
-3. Requires module "statistics"
+2. cd dz
+3. pipenv shell
+4. pipenv install
+5. cd src
+6. run main.py
+7. Requires module "statistics"
 
 for testing in test directory run:  py -m unittest 
 
