@@ -8,6 +8,7 @@ from base import BaseUnit
 
 class Vehicle(BaseUnit, Config):
     """ Class represents Vehicle model.
+    
     Contains main fields of Vehicle.
     As operators are used instances of Soldier class.
     """
