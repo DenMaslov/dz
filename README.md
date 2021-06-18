@@ -5,7 +5,7 @@
 4. pipenv install
 5. cd src
 6. run main.py
-7. Requires module "statistics"
+7. Requires module "statistics" and "pytest"
 
 for testing in tests directory run:  pytest
 
