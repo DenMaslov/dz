@@ -7,7 +7,7 @@
 6. run main.py
 7. Requires module "statistics"
 
-for testing in test directory run:  py -m unittest 
+for testing in tests directory run:  pytest
 
 ### TESTED WITH:
 * Windows 10
