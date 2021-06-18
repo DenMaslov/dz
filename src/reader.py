@@ -87,12 +87,3 @@ class Reader:
                         res_armies[temp].add_squad(s)
             temp += 1
         return res_armies
-
-
-                
-    
-
-
-                        
-
-        
